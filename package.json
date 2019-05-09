@@ -2,8 +2,8 @@
    "name": "candidate-hub-ui",
    "author": "Broadbean",
    "version": "1.0.0",
-   "description": "User Interface for Candidate Hub",
-   "main": "lib/chui.js",
+   "description": "Boilerplate node application",
+   "main": "lib/app.js",
    "scripts": {
       "build": "gulp scripts",
       "test": "mocha",
