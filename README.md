@@ -1,25 +1,23 @@
-create a config directory with two file
-
-config/
-  - default.js
-  - development.js
-
-default.js format
+copy the `config/example\_config.js` file to a new file called `config/development.js` and fill in the default values
 
 ```
-const config = {
-  dataStore: {
-    db: {
-      host: process.env.DBHOST || 'localhost',
-      username: process.env.DBUSER || 'USER',
-      password: process.env.DBPASS || 'PASSWORD',
-      name: process.env.DBNAME || 'DATABASE',
-      port: process.env.PORT || 3306,
-      debug: process.env.DB_DEBUG || false,
-    }
-  }
-};
+cp config/example_config.js config/development.js
+```
 
-module.exports = config;
+Install dependencies
 
 ```
+npm i
+```
+Startup application in development
+
+```
+nodemon bin/app.js
+```
+
+Startup application in production
+
+```
+pm2 start bin/app.js
+```
+
