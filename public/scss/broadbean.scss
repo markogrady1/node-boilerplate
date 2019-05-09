@@ -1,0 +1,131 @@
+/*
+  # Code Style Guide
+  All styling code *must* adhere to these rules.
+
+  ## Units of measurement
+  Wherever possible, rem's should be used. Pixel units should only be used when a specific
+  measurement is required, such as a border thickness or the root font size.
+
+  ## Images
+  Wherever possible, images should not be used.
+*/
+
+:root {
+  font-size: 16px;
+}
+
+@import "fonts/lato";
+@import "svg";
+
+$gray-100: #f1f1f1 !default;
+$gray-200: #e4e4e4 !default;
+$gray-300: #d8d8d8 !default;
+$gray-400: #d2d2d2 !default;
+$gray-500: #aaaaaa !default;
+$gray-600: #767676 !default;
+$gray-700: #4a4a4a !default;
+
+$spacers: (
+  5: (1rem * 2)
+);
+
+$theme-colors: (
+  "primary":   #66A52A,
+  "secondary": #287ab9,
+  "warning":   #cb7c00,
+  "danger":    #d32f2f,
+  "info":      #009b74,
+  "internal":  #6f42c1
+);
+
+$body-bg: #fff !default;
+$font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$body-color: #182642 !default;
+$body-color-light: #90A4AE !default;
+
+$headings-font-weight: 600 !default;
+
+$font-size-base: .875rem;
+$h1-font-size:   1rem * 1.5 !default;
+$h2-font-size:   1rem * 1.25 !default;
+$h3-font-size:   1rem * 1.125 !default;
+$h4-font-size:   1rem * 1 !default;
+$h5-font-size:   1rem * .875 !default;
+$h6-font-size:   1rem * .8125 !default;
+
+$hr-border-width: 2px;
+
+$nav-pills-link-active-color: $body-color !default;
+$nav-pills-link-active-bg:    $gray-100 !default;
+$nav-link-padding-y: .3rem !default;
+
+$border-color: $gray-100 !default;
+
+$text-muted:      $gray-500;
+$link-color:    #287ab9 !default;
+$link-decoration: none !default;
+
+$table-border-color: $gray-300 !default;
+$table-accent-bg: lighten($gray-100, 3%);
+
+$nav-link-disabled-color: $gray-400 !default;
+
+@import "bootstrap/required";
+
+$box-shadow: 0 1px 3px 1px rgba($black, .15) !default;
+
+$theme-colors: map-remove($theme-colors, "success");
+
+@import "bootstrap/optional";
+
+// Add contextual headers to cards
+@each $color, $value in $theme-colors {
+  .card-header-#{$color} {
+    color: theme-color-level($color, 6);
+    background-color: theme-color-level($color, -9);
+  }
+}
+
+// Broadbean Variables
+$navbar-broadbean-color:                rgba(theme-color("primary"), 1) !default;
+$navbar-broadbean-hover-color:          rgba(theme-color("secondary"), .7) !default;
+$navbar-broadbean-active-color:         rgba(theme-color("secondary"), .9) !default;
+$navbar-broadbean-disabled-color:       rgba(theme-color("primary"), .3) !default;
+$navbar-broadbean-toggler-icon-bg:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-broadbean-toggler-border-color: rgba($black, .1) !default;
+
+$navbar-broadbean-modern-color:                $body-color !default;
+$navbar-broadbean-modern-hover-color:          $body-color !default;
+$navbar-broadbean-modern-active-color:         $white !default;
+$navbar-broadbean-modern-disabled-color:       rgba(theme-color("primary"), .3) !default;
+$navbar-broadbean-modern-toggler-icon-bg:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-broadbean-modern-toggler-border-color: rgba($black, .1) !default;
+
+.container-fluid {
+  padding: 0 $grid-gutter-width;
+}
+
+.pagination {
+  .page-item {
+    &.active {
+      .page-link {
+        background-color: theme-color("secondary");
+      }
+    }
+    .page-link {
+      border: 0;
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(theme-color("secondary"), 0.25);
+      }
+    }
+  }
+}
+
+// Broadbean Imports
+@import "typography";
+@import "tables";
+@import "navbar";
+@import "nav";
+@import "utils";
+@import "footer";
+@import "toggle-switch";

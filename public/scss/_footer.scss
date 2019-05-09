@@ -1,0 +1,10 @@
+.bb-footer {
+  font-size: .8rem;
+  .nav-link {
+  //   color: lighten($body-color, 20%);
+    // font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,136 @@
+.navbar-broadbean {
+  -webkit-font-smoothing: antialiased;
+  padding: .5rem;
+  border-bottom: .3rem solid theme-color("primary");
+  box-shadow: 0 0 .4rem rgba(0, 0, 0, .4);
+  .navbar-brand-logo{
+    text-decoration: none;
+    height: 3rem;
+    width: 5rem;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url($broadbean-technology-logo);
+  }
+  
+  &.bg-gradient{
+    $gradient-edge-colour: #DDDDDD;
+    $gradient-centre-colour: #f4f4f4;
+    background: #f4f4f4;
+    background: -moz-linear-gradient(top, $gradient-edge-colour 0%, $gradient-centre-colour 25%, $gradient-centre-colour 75%, $gradient-edge-colour 100%);
+    background: -webkit-linear-gradient(top, $gradient-edge-colour 0%,$gradient-centre-colour 25%,$gradient-centre-colour 75%,$gradient-edge-colour 100%);
+    background: linear-gradient(to bottom, $gradient-edge-colour 0%,$gradient-centre-colour 25%,$gradient-centre-colour 75%,$gradient-edge-colour 100%);
+  }
+  .navbar-brand {
+    color: $navbar-broadbean-active-color;
+    @include hover-focus {
+      color: $navbar-broadbean-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      padding-top: 0;
+      padding-bottom: 0;
+      color: $navbar-broadbean-color;
+      @include hover-focus {
+        color: $navbar-broadbean-hover-color;
+      }
+      &.disabled {
+        color: $navbar-broadbean-disabled-color;
+      }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: $navbar-broadbean-active-color;
+    }
+  }
+
+  .navbar-toggler {
+    color: $navbar-broadbean-color;
+    border-color: $navbar-broadbean-toggler-border-color;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-broadbean-toggler-icon-bg;
+  }
+
+  .navbar-text {
+    color: $navbar-broadbean-color;
+    a {
+      color: $navbar-broadbean-active-color;
+      @include hover-focus {
+        color: $navbar-broadbean-active-color;
+      }
+    }
+  }
+}
+
+.navbar-broadbean-modern {
+  font-size: 0.8125rem;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  padding: 0;
+  border-bottom: .15rem solid darken(theme-color("primary"), 15%);
+  .navbar-brand-logo{
+    text-decoration: none;
+    height: 2.1rem;
+    width: 7.1rem;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url($broadbean-technology-logo-text);
+    background-position: center;
+    margin: 0 1.8rem;
+  }
+  
+  &.bg-light{
+    background-color: #f1f1f1 !important;
+  }
+
+  .navbar-nav {
+    .nav-link {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      margin: 0 0.55rem;
+      color: $navbar-broadbean-modern-color;
+      @include hover-focus {
+        color: $navbar-broadbean-modern-hover-color;
+      }
+      &.disabled {
+        color: $navbar-broadbean-modern-disabled-color;
+      }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: $navbar-broadbean-modern-active-color;
+      background-color: darken(theme-color("primary"), 15%);
+    }
+  }
+
+  .navbar-toggler {
+    color: $navbar-broadbean-modern-color;
+    border-color: $navbar-broadbean-modern-toggler-border-color;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-broadbean-modern-toggler-icon-bg;
+  }
+
+  .navbar-text {
+    color: $navbar-broadbean-modern-color;
+    a {
+      color: $navbar-broadbean-modern-active-color;
+      @include hover-focus {
+        color: $navbar-broadbean-modern-active-color;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+.nav-underline {
+  .nav-link {
+    border-bottom: 1px solid $gray-400;
+  }
+  .active {
+    border-bottom: 3px solid theme-color("secondary");
+    color: theme-color("secondary") !important;
+    position: relative;
+    top: 1px;
+  }
+}
+
+.nav-link {
+  padding: .3rem 1.5rem;
+}
