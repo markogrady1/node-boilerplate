@@ -1,4 +1,4 @@
-copy the `config/example\_config.js` file to a new file called `config/development.js` and fill in the default values
+copy the `config/example_config.js` file to a new file called `config/development.js` and fill in the default values
 
 ```
 cp config/example_config.js config/development.js
