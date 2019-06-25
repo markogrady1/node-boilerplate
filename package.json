@@ -7,7 +7,7 @@
    "scripts": {
       "build": "gulp scripts",
       "test": "mocha",
-      "develop": "NODE_ENV=development nodemon bin/server.js",
+      "dev": "NODE_ENV=development nodemon src/app.js",
       "start": "pm2 start process.json --env production",
       "tidy": "prettier --write '{lib,test}/**/*.js'",
       "test:watch": "nodemon -x nyc --reporter=lcovonly mocha -R spec"
@@ -36,6 +36,7 @@
       "gulp-sass": "^4.0.1"
    },
    "dependencies": {
+      "app-root-path": "^2.2.1",
       "bluebird": "^3.5.1",
       "bootstrap": "^4.1.1",
       "config": "^1.31.0",
@@ -55,6 +56,7 @@
       "mysql2": "^1.5.1",
       "node-cache": "^4.2.0",
       "noty": "^3.2.0-beta",
-      "popper.js": "^1.14.3"
+      "popper.js": "^1.14.3",
+      "winston": "^3.2.1"
    }
 }
