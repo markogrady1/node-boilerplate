@@ -64,7 +64,7 @@ app.use(
 );
 
 app.get(['/healthcheck', '/api/healthcheck'], (req, res) => {
-    return res.status(200).json({ status: 'ok', version: req.version, NODE_ENV: process.env.NODE_ENV });
+    return res.status(200).json({ status: 'OK', version: req.version, NODE_ENV: process.env.NODE_ENV });
 });
 
 app.use('/', homeRouter);
