@@ -15,7 +15,7 @@ const log = winston.createLogger({
     }),
     new winston.transports.File({
       filename:
-        process.env.ACCESS_LOG_FILE || `${root}/logs/ats-textkernal-search.log`,
+        process.env.ACCESS_LOG_FILE || `${root}/logs/boilerplate-app.log`,
       level: process.env.ATS_TK_APP_LOG_LEVEL || 'info',
       format: formatOpts
     })
