@@ -12,12 +12,22 @@ npm i
 Startup application in development
 
 ```
-nodemon bin/app.js
+nodemon bin/server.js
+```
+or via npm
+
+```
+npm run dev
 ```
 
 Startup application in production
 
 ```
-pm2 start bin/app.js
+pm2 start bin/server.js
 ```
 
+or via npm
+
+```
+npm run start
+```
