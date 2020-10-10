@@ -1,14 +1,12 @@
-const express = require('express');
 const config = require('config');
 const hbs = require('hbs');
 const helmet = require('helmet');
 const logger = require('morgan');
 const Promise = require('bluebird');
 const cors = require('cors');
-const path = require('path');
 const bodyParser = require("body-parser");
+const uuidv1 = require('uuid/v1');
 
-const homeRouter = require('../routes/home');
 const log = require('../config/logger');
 
 logger.token('myurl', req => {
@@ -17,7 +15,7 @@ logger.token('myurl', req => {
 
 logger.token('reqid', req => req.reqid);
 
-const app = express();
+const app = require('../app');
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -27,8 +25,6 @@ app.use(bodyParser.json());
 
 app.use(helmet()); // noSniff, xssFilter etc
 app.use(cors());
-console.log(path.join(__dirname, '../public'))
-app.use(express.static(path.join(__dirname, '../public')));
 // view engine setup
 const registerPartials = Promise.promisify(hbs.registerPartials, {
     context: hbs
@@ -47,11 +43,7 @@ app.use((req, res, next) => {
   req.version = version;
   res.set('Server', `NEWAPP ${version}`);
 
-  req.reqid =
-      'NEWAPP' +
-      Math.random()
-          .toString(36)
-          .substr(2, 9);
+  req.reqid = uuidv1();
   res.set('X-Request-Id', req.reqid);
   next();
 });
@@ -62,12 +54,6 @@ app.use(
     { stream: log.stream }
   )
 );
-
-app.get(['/healthcheck', '/api/healthcheck'], (req, res) => {
-    return res.status(200).json({ status: 'OK', version: req.version, NODE_ENV: process.env.NODE_ENV });
-});
-
-app.use('/', homeRouter);
 
 // throw 404 if no data
 app.use((req, res, next) => {

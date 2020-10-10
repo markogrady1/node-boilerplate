@@ -6,7 +6,7 @@
    "main": "lib/app.js",
    "scripts": {
       "test": "mocha",
-      "dev": "NODE_ENV=development nodemon src/app.js",
+      "dev": "NODE_ENV=development nodemon bin/server.js",
       "start": "pm2 start process.json --env production",
       "tidy": "prettier --write '{lib,test}/**/*.js'",
       "test:watch": "nodemon -x nyc --reporter=lcovonly mocha -R spec"
