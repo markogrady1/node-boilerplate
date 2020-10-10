@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 
 app.use(
   logger(
-      ':remote-addr - - [:date[clf]] ":method :myurl HTTP/:http-version" :status :res[content-length] :response-time ":reqid"',
+     '":method :myurl HTTP/:http-version" :status :res[content-length] :response-time ":reqid"',
     { stream: log.stream }
   )
 );

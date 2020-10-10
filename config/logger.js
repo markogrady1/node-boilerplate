@@ -10,13 +10,13 @@ const log = winston.createLogger({
   levels: winston.config.syslog.levels,
   transports: [
     new winston.transports.Console({
-      level: process.env.ATS_TK_APP_LOG_LEVEL || 'info',
+      level: process.env.APP_LOG_LEVEL || 'info',
       format: formatOpts
     }),
     new winston.transports.File({
       filename:
         process.env.ACCESS_LOG_FILE || `${root}/logs/boilerplate-app.log`,
-      level: process.env.ATS_TK_APP_LOG_LEVEL || 'info',
+      level: process.env.APP_LOG_LEVEL || 'info',
       format: formatOpts
     })
   ]
