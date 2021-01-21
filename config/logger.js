@@ -11,19 +11,19 @@ const log = winston.createLogger({
   transports: [
     new winston.transports.Console({
       level: process.env.APP_LOG_LEVEL || 'info',
-      format: formatOpts
+      format: formatOpts,
     }),
     new winston.transports.File({
       filename:
         process.env.ACCESS_LOG_FILE || `${root}/logs/boilerplate-app.log`,
       level: process.env.APP_LOG_LEVEL || 'info',
-      format: formatOpts
-    })
-  ]
+      format: formatOpts,
+    }),
+  ],
 });
 
 log.stream = {
-  write: message => log.info(message)
+  write: (message) => log.info(message),
 };
 
 module.exports = log;
@@ -41,4 +41,3 @@ Usage:
     log.error('message');
 
 */
-

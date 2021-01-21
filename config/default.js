@@ -11,10 +11,10 @@ const config = {
       debug: process.env.DB_DEBUG || false,
       pool: {
         max: 10,
-        min: 0
-      }
+        min: 0,
+      },
     },
-  }
+  },
 };
 
 module.exports = config;
