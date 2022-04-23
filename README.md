@@ -17,7 +17,7 @@ nodemon bin/server.js
 or via npm
 
 ```
-npm run dev
+npm start
 ```
 
 Startup application in production
@@ -29,5 +29,5 @@ pm2 start bin/server.js
 or via npm
 
 ```
-npm run start
+npm run start:prod
 ```

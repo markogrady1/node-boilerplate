@@ -1,6 +1,7 @@
 const config = require('config');
-const log = require('pino')();
 const router = require('express').Router();
+
+const log = require('../config/logger');
 
 router.get('/', async (req, res) => {
   let status = 500;

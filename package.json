@@ -7,7 +7,8 @@
   "scripts": {
     "test": "jest",
     "start": "NODE_ENV=development nodemon bin/server.js",
-    "start:prod": "pm2 start process.json --env production",
+    "start-prod": "NODE_ENV=production node bin/server.js",
+    "start-docker": "NODE_ENV=docker node bin/server.js",
     "tidy": "eslint . --fix",
     "test:watch": "nodemon -x nyc --reporter=lcovonly mocha -R spec"
   },
@@ -30,7 +31,6 @@
     "jest": "^27.5.1",
     "jest-html-reporter": "^3.4.2",
     "nodemon": "^2.0.15",
-    "pm2": "^5.2.0",
     "supertest": "^6.2.2"
   },
   "dependencies": {
