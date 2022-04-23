@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
+  labels:
+    app: boilerplate-app
+  name: boilerplate-deployment
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: boilerplate-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: boilerplate-app
+    spec:
+      containers:
+        - name: boilerplate
+          image: boilerplate
+          imagePullPolicy: IfNotPresent
+          command: ["npm", "run", "start-prod"]
+          ports:
+            - containerPort: 3333
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: production
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: boilerplate-app
+  name: boilerplate-service
+  namespace: default
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 3333
+    protocol: TCP
+    targetPort: 3333
+  selector:
+    app: boilerplate-app
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  generation: 1
+  name: boilerplate-ingress
+  namespace: default
+spec:
+  ingressClassName: boilerplate
+  rules:
+  - host: demo.localdev.me
+    http:
+      paths:
+      - backend:
+          service:
+            name: boilerplate-app
+            port:
+              number: 3333
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost

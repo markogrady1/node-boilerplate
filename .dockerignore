@@ -1,4 +1,9 @@
 .eslintrc.js
 .git
+.github
 .gitignore
+.k8s
 node_modules
+test
+build
+logs
