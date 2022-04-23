@@ -5,17 +5,16 @@
   "description": "Boilerplate node application",
   "main": "lib/app.js",
   "scripts": {
-    "test": "mocha",
-    "dev": "NODE_ENV=development nodemon bin/server.js",
-    "start": "pm2 start process.json --env production",
-    "tidy": "prettier --write '{.,src,test,config}/**/*.js'",
+    "test": "jest",
+    "start": "NODE_ENV=development nodemon bin/server.js",
+    "start:prod": "pm2 start process.json --env production",
+    "tidy": "eslint . --fix",
     "test:watch": "nodemon -x nyc --reporter=lcovonly mocha -R spec"
   },
   "nodemonConfig": {
     "ignore": [
       "node_modules/**/node_modules"
     ],
-    "delay": "2500",
     "env": {
       "NODE_ENV": "development",
       "NODE_CONFIG_DIR": "./config"
@@ -24,33 +23,29 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "mocha": "^8.2.1",
-    "mocha-eslint": "^7.0.0",
-    "nodemon": "^2.0.7",
-    "pm2": "^4.5.1",
-    "prettier": "^2.2.1",
-    "sinon": "^9.2.3"
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.1.4",
+    "jest": "^27.5.1",
+    "jest-html-reporter": "^3.4.2",
+    "nodemon": "^2.0.15",
+    "pm2": "^5.2.0",
+    "supertest": "^6.2.2"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
     "bluebird": "^3.7.2",
-    "config": "^3.3.3",
+    "body-parser": "^1.20.0",
+    "config": "^3.3.7",
     "cors": "^2.8.5",
-    "debug": "^4.3.1",
-    "ejs": "^3.1.5",
-    "eslint": "^7.17.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "express": "^4.17.1",
-    "hbs": "^4.1.1",
-    "helmet": "^4.4.1",
-    "morgan": "^1.10.0",
+    "debug": "^4.3.4",
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "hbs": "^4.2.0",
+    "helmet": "^5.0.2",
+    "pino": "^7.10.0",
     "uuid": "^8.3.2",
-    "winston": "^3.3.3"
-  },
-  "prettier": {
-    "singleQuote": true
+    "winston": "^3.7.2"
   }
 }

@@ -1,20 +1,16 @@
-'use strict';
+// /* eslint-disable no-useless-escape */
+const supertest = require('supertest');
+const app = require('../bin/server');
 
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const app = require('../src/app');
+afterEach(() => {
+  jest.restoreAllMocks();
+});
 
-const expect = chai.expect;
-
-chai.use(chaiHttp);
-
-describe('test base routes', () => {
-  it('it should GET back a health check response', async () => {
-    const res = await chai.request(app).get('/healthcheck');
-
-    expect(res.status).to.equal(200);
-    expect(res.body).to.be.an('object');
-    expect(res.body.status).to.equal('OK');
-    expect(res.body).to.haveOwnProperty('version');
+describe('GET  /healthcheck', () => {
+  it('should GET back a health check response', async () => {
+    const res = await supertest(app).get('/healthcheck');
+    expect(res.status).toEqual(200);
+    expect(typeof res.body).toBe('object');
+    expect(res.body.status).toEqual('OK');
   });
 });

@@ -1,6 +1,3 @@
-// for development create a config/development.js file with the same format as below. It should contain localhost details
-// for production create a config/default.js file with the same format as below. It should contain live details
-
 const config = {
   port: 3333,
   version: '0.2.0',

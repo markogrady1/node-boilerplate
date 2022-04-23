@@ -1,0 +1,53 @@
+name: nodejs
+
+on:
+- push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        name:
+        - Node.js 16.x
+        - Node.js 17.x
+
+        include:
+        - name: Node.js 16.x
+          node-version: "16.14"
+          npm-i: jest  supertest
+
+        - name: Node.js 17.x
+          node-version: "17.8"
+          npm-i: jest  supertest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Node.js ${{ matrix.node-version }}
+      shell: bash -eo pipefail -l {0}
+      run: |
+        nvm install --default ${{ matrix.node-version }}
+        dirname "$(nvm which ${{ matrix.node-version }})" >> "$GITHUB_PATH"
+    - name: Configure npm
+      run: |
+        npm config set loglevel error
+        npm config set shrinkwrap false
+    - name: Install npm module(s) ${{ matrix.npm-i }}
+      run: npm install --save-dev ${{ matrix.npm-i }}
+      if: matrix.npm-i != ''
+
+    - name: Install Node.js dependencies
+      run: npm install
+
+    - name: List environment
+      id: list_env
+      shell: bash
+      run: |
+        echo "node@$(node -v)"
+        echo "npm@$(npm -v)"
+        npm -s ls ||:
+    - name: Run tests
+      shell: bash
+      run: npm run test
