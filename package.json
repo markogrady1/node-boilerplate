@@ -30,7 +30,7 @@
     "eslint-plugin-jest": "^26.1.4",
     "jest": "^27.5.1",
     "jest-html-reporter": "^3.4.2",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "supertest": "^6.2.2"
   },
   "dependencies": {
